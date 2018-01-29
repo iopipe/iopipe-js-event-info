@@ -1,6 +1,7 @@
 /*eslint-disable no-console*/
 import pkg from '../package.json';
 import handleS3event from './plugins/s3.js';
+import handleKinesisEvent from './plugins/kinesis.js';
 
 module.exports = class EventInfoPlugin {
   constructor(config = {}, invocationInstance) {
@@ -9,7 +10,7 @@ module.exports = class EventInfoPlugin {
     this.event = this.invocationInstance.event;
     this.eventPlugins = [
       handleS3event,
-      handleKinesisevent
+      handleKinesisEvent
     ];
     this.hooks = {
       'pre:report': this.preReport.bind(this)
@@ -31,21 +32,3 @@ module.exports = class EventInfoPlugin {
   return invocationInstance => {
     return new EventInfoPlugin(pluginOpts, invocationInstance);
   };*/
-
-function handleKinesisevent () {
-  this.event.Records.forEach((record) => {
-    if (record.eventVersion !== "1.0" ||
-        record.eventSource !== "aws:kinesis") {
-          return;
-    }
-    
-    this.log('event-kinesis-eventID', record.eventID);
-    this.log('events-kinesis-awsRegion', record.awsRegion);
-    this.log('events-kinesis-eventSourceARN', record.eventSourceARN);
-    this.log('events-kinesis-eventName', record.eventName);
-    this.log('events-kinesis-partitionKey', record.events.kinesis.partitionKey);
-    this.log('events-kinesis-data', record.kinesis.data);
-    this.log('events-kinesis-schemaVersion', record.kinesis.kinesisSchemaVersion);
-    this.log('events-kinesis-sequenceNumer', record.kinesis.sequenceNumber);
-  })
-}

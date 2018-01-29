@@ -1,6 +1,7 @@
 import 'iopipe';
 import EventInfoPlugin from './index.js';
 import handleS3event from './plugins/s3.js';
+import handleKinesisEvent from './plugins/kinesis.js';
 
 class MockInvocation {
   constructor(event) {
@@ -55,7 +56,8 @@ const sampleS3record =
         }
      ]
   };
-const sampleKinesisrecord =
+
+const sampleKinesisRecord =
   {
     "Records": [
       {
@@ -97,3 +99,17 @@ describe("understanding of S3 event records", () => {
   it("includes the object key", () => {
   });
 });
+
+describe("understanding of kinesis event records", () => {
+  it("creates custom metrics", () => {
+    console.log("creating plugin and setting event.");
+    const invocationInstance = new MockInvocation(sampleKinesisRecord);
+    const plugin = new EventInfoPlugin({}, invocationInstance);
+    console.log("triggering event capture.");
+    handleKinesisEvent.apply(plugin);
+  });
+
+  it("includes the object key", () => {
+  });
+});
+
