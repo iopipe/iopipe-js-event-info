@@ -113,7 +113,22 @@ const sampleFirehoseRecord =
 				}
 			}
 		]
-	};
+  }
+
+const sampleScheduledEventRecord =
+  {
+    "account": "123456789012",
+    "region": "us-east-1",
+    "detail": {},
+    "detail-type": "Scheduled Event",
+    "source": "aws.events",
+    "time": "1970-01-01T00:00:00Z",
+    "id": "cdc73f9d-aea9-11e3-9d5a-835b769c0d9c",
+    "resources": [
+      "arn:aws:events:us-east-1:123456789012:rule/my-schedule"
+    ]
+  }
+  ;
 
 describe("ignores non-S3 records", () => {
   it("has no Records key", () => {
@@ -150,5 +165,15 @@ describe("understanding of firehose event records", () => {
     handleFirehoseEvent.apply(plugin);
 
     expect(invocationInstance.logData['event-kinesis-awsRegion']).toEqual(sampleFirehoseRecord.records[0].region);
+  });
+});
+
+describe("understanding of scheduled event records", () => {
+  it("creates awsRegion custom metric", () => {
+    const invocationInstance = new MockInvocation(sampleScheduledEventRecord);
+    const plugin = new EventInfoPlugin({}, invocationInstance);
+    handleScheduledEvent.apply(plugin);
+
+    expect(invocationInstance.logData['event-scheduledevent-awsRegion']).toEqual(sampleFirehoseRecord.records[0].region);
   });
 });

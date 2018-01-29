@@ -3,6 +3,7 @@ import pkg from '../package.json';
 import handleS3event from './plugins/s3.js';
 import handleKinesisEvent from './plugins/kinesis.js';
 import handleFirehoseEvent from './plugins/firehose.js';
+import handleScheduledEvent from './plugins/scheduled.js';
 
 module.exports = class EventInfoPlugin {
   constructor(config = {}, invocationInstance) {
@@ -13,6 +14,7 @@ module.exports = class EventInfoPlugin {
       handleS3event,
       handleKinesisEvent,
       handleFirehoseEvent,
+      handleScheduledEvent,
     ];
     this.hooks = {
       'pre:report': this.preReport.bind(this)
