@@ -6,6 +6,7 @@ module.exports = function handleKinesisEvent () {
   if (firstEvent.eventVersion === "1.0" &&
       firstEvent.eventSource === "aws:kinesis") {
     this.log('event-kinesis-awsRegion', firstEvent.awsRegion);
+    this.log('event-kinesis-streamArn', firstEvent.eventSourceARN);
     this.log('event-kinesis-count', this.event.Records.length);
   }
   return;
