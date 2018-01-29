@@ -1,7 +1,7 @@
 {
-  "name": "@iopipe/js-starter",
-  "version": "0.0.0-semantically-released",
-  "description": "My module description",
+  "name": "@iopipe/eventinfo",
+  "version": "0.0.1",
+  "description": "Auto-log custom metrics from AWS Lambda event sources",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -33,7 +33,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/iopipe/js-starter.git"
+    "url": "https://github.com/iopipe/iopipe-js-eventinfo.git"
   },
   "dependencies": {}
 }
