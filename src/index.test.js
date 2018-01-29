@@ -1,3 +1,19 @@
+import 'iopipe';
+import EventInfoPlugin from './index.js';
+import handleS3event from './plugins/s3.js';
+
+class MockInvocation {
+  constructor(event) {
+    this.context = {
+      'iopipe': {
+        'log': console.log
+      }
+    }
+    this.event = event;
+    return this;
+  }
+}
+
 const notS3record = { "hello": "world" };
 const sampleS3record =
   {
@@ -70,6 +86,12 @@ describe("ignores non-S3 records", () => {
 
 describe("understanding of S3 event records", () => {
   it("creates custom metrics", () => {
+    console.log("creating plugin and setting event.");
+    const invocationInstance = new MockInvocation(sampleS3record);
+    const plugin = new EventInfoPlugin({}, invocationInstance);
+
+    console.log("triggering event capture.");
+    handleS3event.apply(plugin);
   });
 
   it("includes the object key", () => {
