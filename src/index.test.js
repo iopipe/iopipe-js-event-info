@@ -5,9 +5,12 @@ import handleKinesisEvent from './plugins/kinesis.js';
 
 class MockInvocation {
   constructor(event) {
+    this.logData = {};
     this.context = {
       'iopipe': {
-        'log': console.log
+        'log': (key, value) => {
+          this.logData[key] = value;
+        }
       }
     }
     this.event = event;
@@ -87,26 +90,22 @@ describe("ignores non-S3 records", () => {
 });
 
 describe("understanding of S3 event records", () => {
-  it("creates custom metrics", () => {
-    console.log("creating plugin and setting event.");
+  it("creates awsRegion custom metric", () => {
     const invocationInstance = new MockInvocation(sampleS3record);
     const plugin = new EventInfoPlugin({}, invocationInstance);
-
-    console.log("triggering event capture.");
     handleS3event.apply(plugin);
-  });
 
-  it("includes the object key", () => {
+    expect(invocationInstance.logData['event-s3-awsRegion']).toEqual(sampleS3record.Records[0].awsRegion);
   });
 });
 
 describe("understanding of kinesis event records", () => {
-  it("creates custom metrics", () => {
-    console.log("creating plugin and setting event.");
+  it("creates awsRegion custom metric", () => {
     const invocationInstance = new MockInvocation(sampleKinesisRecord);
     const plugin = new EventInfoPlugin({}, invocationInstance);
-    console.log("triggering event capture.");
     handleKinesisEvent.apply(plugin);
+
+    expect(invocationInstance.logData['event-kinesis-awsRegion']).toEqual(sampleKinesisRecord.Records[0].awsRegion);
   });
 
   it("includes the object key", () => {
