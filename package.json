@@ -1,0 +1,39 @@
+{
+  "name": "@iopipe/js-starter",
+  "version": "0.0.0-semantically-released",
+  "description": "My module description",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "iopipe-scripts build",
+    "commit": "iopipe-scripts commit",
+    "lint": "iopipe-scripts lint",
+    "prepublish": "npm run build",
+    "release": "iopipe-scripts release",
+    "test": "iopipe-scripts test",
+    "validate": "iopipe-scripts validate"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "IOpipe <dev@iopipe.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@iopipe/scripts": "^1.2.0"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/@iopipe/scripts/eslint.js"
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iopipe/js-starter.git"
+  },
+  "dependencies": {}
+}
