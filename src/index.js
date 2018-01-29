@@ -6,6 +6,7 @@ import handleFirehoseEvent from './plugins/firehose.js';
 import handleScheduledEvent from './plugins/scheduled.js';
 import handleCloudfrontEvent from './plugins/cloudfront.js';
 import handleApiGwEvent from './plugins/apigw.js';
+import handleSesEvent from './plugins/ses.js';
 
 module.exports = class EventInfoPlugin {
   constructor(config = {}, invocationInstance) {
@@ -19,6 +20,7 @@ module.exports = class EventInfoPlugin {
       handleScheduledEvent,
       handleCloudfrontEvent,
       handleApiGwEvent,
+      handleSesEvent,
     ];
     this.hooks = {
       'pre:report': this.preReport.bind(this)
