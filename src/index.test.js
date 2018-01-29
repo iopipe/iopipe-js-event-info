@@ -313,11 +313,12 @@ describe("understanding of apigw event records", () => {
     expect(invocationInstance.logData['event-apigw-accountId']).toEqual(sampleApiGwRecord.requestContext.accountId);
   });
 });
+
 describe("understanding of sns event records", () => {
   it("creates EventSubscriptionArn custom metric", () => {
     const invocationInstance = new MockInvocation(sampleSnsRecord);
     const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleSesEvent.apply(plugin);
+    handleSnsEvent.apply(plugin);
 
     expect(invocationInstance.logData['event-sns-EventSubscriptionArn']).toEqual(sampleSnsRecord.EventSubscriptionArn);
   });
