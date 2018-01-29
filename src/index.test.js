@@ -6,7 +6,7 @@ import handleFirehoseEvent from './plugins/firehose.js';
 import handleScheduledEvent from './plugins/scheduled.js';
 import handleCloudfrontEvent from './plugins/cloudfront.js';
 import handleApiGwEvent from './plugins/apigw.js';
-import handleSesEvent from './plugins/ses.js';
+import handleSnsEvent from './plugins/sns.js';
 
 class MockInvocation {
   constructor(event) {
@@ -313,12 +313,12 @@ describe("understanding of apigw event records", () => {
     expect(invocationInstance.logData['event-apigw-accountId']).toEqual(sampleApiGwRecord.requestContext.accountId);
   });
 });
-describe("understanding of ses event records", () => {
+describe("understanding of sns event records", () => {
   it("creates EventSubscriptionArn custom metric", () => {
-    const invocationInstance = new MockInvocation(sampleSesRecord);
+    const invocationInstance = new MockInvocation(sampleSnsRecord);
     const plugin = new EventInfoPlugin({}, invocationInstance);
     handleSesEvent.apply(plugin);
 
-    expect(invocationInstance.logData['event-ses-EventSubscriptionArn']).toEqual(sampleSesRecord.EventSubscriptionArn);
+    expect(invocationInstance.logData['event-sns-EventSubscriptionArn']).toEqual(sampleSnsRecord.EventSubscriptionArn);
   });
 });
