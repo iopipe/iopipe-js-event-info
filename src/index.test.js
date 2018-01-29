@@ -166,7 +166,7 @@ const sampleCloudfrontRecord =
 		]
   }
 
-const sampleSesRecord =
+const sampleSnsRecord =
   {
     "Records": [
       {
