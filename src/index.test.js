@@ -3,6 +3,8 @@ import EventInfoPlugin from './index.js';
 import handleS3event from './plugins/s3.js';
 import handleKinesisEvent from './plugins/kinesis.js';
 import handleFirehoseEvent from './plugins/firehose.js';
+import handleScheduledEvent from './plugins/scheduled.js';
+import handleCloudfrontEvent from './plugins/cloudfront.js';
 
 class MockInvocation {
   constructor(event) {
@@ -130,6 +132,38 @@ const sampleScheduledEventRecord =
   }
   ;
 
+const sampleCloudfrontRecord =
+	{
+		"Records": [
+			{
+				"cf": {
+					"config": {
+						"distributionId": "EDFDVBD6EXAMPLE"
+					},
+					"request": {
+						"clientIp": "2001:0db8:85a3:0:0:8a2e:0370:7334",
+						"method": "GET",
+						"uri": "/picture.jpg",
+						"headers": {
+							"host": [
+								{
+									"key": "Host",
+									"value": "d111111abcdef8.cloudfront.net"
+								}
+							],
+							"user-agent": [
+								{
+									"key": "User-Agent",
+									"value": "curl/7.51.0"
+								}
+							]
+						}
+					}
+				}
+			}
+		]
+	};
+
 describe("ignores non-S3 records", () => {
   it("has no Records key", () => {
   });
@@ -174,6 +208,16 @@ describe("understanding of scheduled event records", () => {
     const plugin = new EventInfoPlugin({}, invocationInstance);
     handleScheduledEvent.apply(plugin);
 
-    expect(invocationInstance.logData['event-scheduledevent-awsRegion']).toEqual(sampleFirehoseRecord.records[0].region);
+    expect(invocationInstance.logData['event-scheduledevent-awsRegion']).toEqual(sampleScheduledEventRecord.region);
+  });
+});
+
+describe("understanding of cloudfront event records", () => {
+  it("creates awsRegion custom metric", () => {
+    const invocationInstance = new MockInvocation(sampleCloudfrontRecord);
+    const plugin = new EventInfoPlugin({}, invocationInstance);
+    handleCloudfrontEvent.apply(plugin);
+
+    expect(invocationInstance.logData['event-cloudfront-distributionId']).toEqual(sampleCloudfrontRecord.Records[0].cf.config.distributionId);
   });
 });
