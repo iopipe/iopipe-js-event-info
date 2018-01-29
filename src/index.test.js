@@ -1,16 +1,12 @@
-  /* Sample S3 record.
-     - "eventSource":"aws:s3",
-     - "awsRegion":"us-east-1",
-     - responseElements (needed for contacting AWS support)
-     - The s3 key provides information about the bucket and object involved in the event. url-encoded.
-     - The sequencer key provides a way to determine the sequence of events. (may be undefined?)
+const notS3record = { "hello": "world" };
+const sampleS3record =
   {
      "Records":[
         {
            "eventVersion":"2.0",
            "eventSource":"aws:s3",
            "awsRegion":"us-east-1",
-           "eventTime":The time, in ISO-8601 format, for example, 1970-01-01T00:00:00.000Z, when S3 finished processing the request,
+           "eventTime": "1970-01-01T00:00:00.000Z",
            "eventName":"event-type",
            "userIdentity":{
               "principalId":"Amazon-customer-ID-of-the-user-who-caused-the-event"
@@ -34,14 +30,28 @@
               },
               "object":{
                  "key":"object-key",
-                 "size":object-size,
+                 "size": 10,
                  "eTag":"object eTag",
                  "versionId":"object version if bucket is versioning-enabled, otherwise null",
-                 "sequencer": "a string representation of a hexadecimal value used to determine event sequence,
-                     only used with PUTs and DELETEs"
+                 "sequencer": "a string representation of a hexadecimal value used to determine event sequence, only used with PUTs and DELETEs"
               }
            }
         }
      ]
-  }
-  */
+  };
+
+describe("ignores non-S3 records", () => {
+  it("has no Records key", () => {
+  });
+
+  it("has non-S3 records", () => {
+  });
+});
+
+describe("understanding of S3 event records", () => {
+  it("creates custom metrics", () => {
+  });
+
+  it("includes the object key", () => {
+  });
+});
