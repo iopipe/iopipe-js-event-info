@@ -8,10 +8,10 @@ import handleCloudfrontEvent from './plugins/cloudfront.js';
 import handleApiGwEvent from './plugins/apigw.js';
 import handleSesEvent from './plugins/ses.js';
 
-module.exports = class EventInfoPlugin {
+class EventInfoPlugin {
   constructor(config = {}, invocationInstance) {
     this.invocationInstance = invocationInstance;
-    this.log = this.invocationInstance.context.iopipe.log;
+    this.log = () => { this.invocationInstance.context.iopipe.log.apply(arguments) };
     this.event = this.invocationInstance.event;
     this.eventPlugins = [
       handleS3event,
@@ -38,7 +38,8 @@ module.exports = class EventInfoPlugin {
   }
 }
 
-/*module.exports = function instantiateEventInfoPlugin(pluginOpts) {
+module.exports = function instantiateEventInfoPlugin(pluginOpts) {
   return invocationInstance => {
     return new EventInfoPlugin(pluginOpts, invocationInstance);
-  };*/
+  };
+};
