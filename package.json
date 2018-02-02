@@ -39,5 +39,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/iopipe/iopipe-js-eventinfo.git"
+  },
+  "dependencies": {
+    "jest": "^22.1.4",
+    "jest-runner": "^22.1.4",
+    "read-pkg": "^3.0.0",
+    "string-length": "^2.0.0"
   }
 }

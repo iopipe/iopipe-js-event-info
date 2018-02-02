@@ -11,9 +11,14 @@ import handleSesEvent from './plugins/ses.js';
 class EventInfoPlugin {
   constructor(config = {}, invocationInstance) {
     this.invocationInstance = invocationInstance;
-    this.log = () => { this.invocationInstance.context.iopipe.log.apply(arguments) };
-    this.event = this.invocationInstance.event;
-    this.eventPlugins = [
+
+    this.hooks = {
+      'pre:report': this.preReport.bind(this)
+    };
+    return this;
+  }
+  preReport() {
+    const eventPlugins = [
       handleS3event,
       handleKinesisEvent,
       handleFirehoseEvent,
@@ -22,15 +27,11 @@ class EventInfoPlugin {
       handleApiGwEvent,
       handleSesEvent,
     ];
-    this.hooks = {
-      'pre:report': this.preReport.bind(this)
-    };
-    return this;
-  }
-  preReport() {
-    this.eventPlugins.forEach ((plugin) => {
-      plugin.bind(this);
-      plugin();
+    this.log = this.invocationInstance.context.iopipe.log;
+    this.event = this.invocationInstance.event;
+    eventPlugins.forEach ((plugin) => {
+      //plugin.bind(this);
+      plugin(this.event, this.log);
     })
   }
   get meta() {
