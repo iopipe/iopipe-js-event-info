@@ -1,18 +1,18 @@
-module.exports = function handleS3event (event, log) {
+module.exports = function handleS3event(event, log) {
   if (!event.Records) return;
   if (event.Records.length === 0) return;
-  event.Records.forEach((record) => {
-    if (record.eventVersion !== "2.0" ||
-        record.eventSource !== "aws:s3") {
+  event.Records.forEach(record => {
+    if (record.eventVersion !== '2.0' || record.eventSource !== 'aws:s3') {
       return;
     }
 
     /* responseElementes used for contacting AWS support */
-    log(`event-s3-x-amz-request-id`,
-             record.responseElements['x-amz-request-id']);
-    log(`event-s3-x-amz-id-2`,
-             record.responseElements['x-amz-id-2']);
-    log(`event-s3-awsRegion`, record.awsRegion); 
+    log(
+      `event-s3-x-amz-request-id`,
+      record.responseElements['x-amz-request-id']
+    );
+    log(`event-s3-x-amz-id-2`, record.responseElements['x-amz-id-2']);
+    log(`event-s3-awsRegion`, record.awsRegion);
     log(`event-s3-bucketName`, record.s3.bucket.name);
     log(`event-s3-bucketArn`, record.s3.bucket.arn);
     log(`event-s3-objectKey`, record.s3.object.key);
@@ -23,5 +23,5 @@ module.exports = function handleS3event (event, log) {
     log(`event-s3-eventName`, record.eventName);
     log(`event-s3-userIdentity`, record.userIdentity.principalId);
     log(`event-s3-sourceIPaddr`, record.requestParameters.sourceIPAddress);
-  })
-}
+  });
+};

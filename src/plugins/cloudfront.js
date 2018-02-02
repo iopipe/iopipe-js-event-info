@@ -1,7 +1,6 @@
-module.exports = function handleCloudfrontEvent (event, log) {
+module.exports = function handleCloudfrontEvent(event, log) {
   if (!event.Records) return;
-  if (event.Records.length === 0 ||
-      event.Records[0].cf === undefined) {
+  if (event.Records.length === 0 || event.Records[0].cf === undefined) {
     return;
   }
 
@@ -14,6 +13,9 @@ module.exports = function handleCloudfrontEvent (event, log) {
     log('event-cloudfront-headersHost', cf.request.headers.host[0].value);
   }
   if (cf.request.headers['user-agent']) {
-    log('event-cloudfront-headersUserAgent', cf.request.headers['user-agent'][0].value);
+    log(
+      'event-cloudfront-headersUserAgent',
+      cf.request.headers['user-agent'][0].value
+    );
   }
-}
+};
