@@ -6,7 +6,7 @@ import handleFirehoseEvent from './plugins/firehose.js';
 import handleScheduledEvent from './plugins/scheduled.js';
 import handleCloudfrontEvent from './plugins/cloudfront.js';
 import handleApiGwEvent from './plugins/apigw.js';
-import handleSesEvent from './plugins/ses.js';
+import handleSnsEvent from './plugins/sns.js';
 
 class MockInvocation {
   constructor(event) {
@@ -166,7 +166,7 @@ const sampleCloudfrontRecord =
 		]
   }
 
-const sampleSesRecord =
+const sampleSnsRecord =
   {
     "Records": [
       {
@@ -257,8 +257,8 @@ describe("ignores non-S3 records", () => {
 describe("understanding of S3 event records", () => {
   it("creates awsRegion custom metric", () => {
     const invocationInstance = new MockInvocation(sampleS3record);
-    const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleS3event.apply(plugin);
+    const plugin = EventInfoPlugin()(invocationInstance);
+    plugin.preReport()
 
     expect(invocationInstance.logData['event-s3-awsRegion']).toEqual(sampleS3record.Records[0].awsRegion);
   });
@@ -267,8 +267,8 @@ describe("understanding of S3 event records", () => {
 describe("understanding of kinesis event records", () => {
   it("creates awsRegion custom metric", () => {
     const invocationInstance = new MockInvocation(sampleKinesisRecord);
-    const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleKinesisEvent.apply(plugin);
+    const plugin = EventInfoPlugin()(invocationInstance);
+    plugin.preReport()
 
     expect(invocationInstance.logData['event-kinesis-awsRegion']).toEqual(sampleKinesisRecord.Records[0].awsRegion);
   });
@@ -277,8 +277,8 @@ describe("understanding of kinesis event records", () => {
 describe("understanding of firehose event records", () => {
   it("creates awsRegion custom metric", () => {
     const invocationInstance = new MockInvocation(sampleFirehoseRecord);
-    const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleFirehoseEvent.apply(plugin);
+    const plugin = EventInfoPlugin()(invocationInstance);
+    plugin.preReport()
 
     expect(invocationInstance.logData['event-kinesis-awsRegion']).toEqual(sampleFirehoseRecord.records[0].region);
   });
@@ -287,8 +287,8 @@ describe("understanding of firehose event records", () => {
 describe("understanding of scheduled event records", () => {
   it("creates awsRegion custom metric", () => {
     const invocationInstance = new MockInvocation(sampleScheduledEventRecord);
-    const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleScheduledEvent.apply(plugin);
+    const plugin = EventInfoPlugin()(invocationInstance);
+    plugin.preReport()
 
     expect(invocationInstance.logData['event-scheduledevent-awsRegion']).toEqual(sampleScheduledEventRecord.region);
   });
@@ -297,8 +297,8 @@ describe("understanding of scheduled event records", () => {
 describe("understanding of cloudfront event records", () => {
   it("creates distributionId custom metric", () => {
     const invocationInstance = new MockInvocation(sampleCloudfrontRecord);
-    const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleCloudfrontEvent.apply(plugin);
+    const plugin = EventInfoPlugin()(invocationInstance);
+    plugin.preReport()
 
     expect(invocationInstance.logData['event-cloudfront-distributionId']).toEqual(sampleCloudfrontRecord.Records[0].cf.config.distributionId);
   });
@@ -307,18 +307,18 @@ describe("understanding of cloudfront event records", () => {
 describe("understanding of apigw event records", () => {
   it("creates accountId custom metric", () => {
     const invocationInstance = new MockInvocation(sampleApiGwRecord);
-    const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleApiGwEvent.apply(plugin);
+    const plugin = EventInfoPlugin()(invocationInstance);
+    plugin.preReport()
 
     expect(invocationInstance.logData['event-apigw-accountId']).toEqual(sampleApiGwRecord.requestContext.accountId);
   });
 });
-describe("understanding of ses event records", () => {
+describe("understanding of sns event records", () => {
   it("creates EventSubscriptionArn custom metric", () => {
-    const invocationInstance = new MockInvocation(sampleSesRecord);
-    const plugin = new EventInfoPlugin({}, invocationInstance);
-    handleSesEvent.apply(plugin);
+    const invocationInstance = new MockInvocation(sampleSnsRecord);
+    const plugin = EventInfoPlugin()(invocationInstance);
+    plugin.preReport()
 
-    expect(invocationInstance.logData['event-ses-EventSubscriptionArn']).toEqual(sampleSesRecord.EventSubscriptionArn);
+    expect(invocationInstance.logData['event-sns-EventSubscriptionArn']).toEqual(sampleSnsRecord.EventSubscriptionArn);
   });
 });
