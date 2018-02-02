@@ -6,7 +6,7 @@ import handleFirehoseEvent from './plugins/firehose.js';
 import handleScheduledEvent from './plugins/scheduled.js';
 import handleCloudfrontEvent from './plugins/cloudfront.js';
 import handleApiGwEvent from './plugins/apigw.js';
-import handleSesEvent from './plugins/ses.js';
+import handleSnsEvent from './plugins/sns.js';
 
 class EventInfoPlugin {
   constructor(config = {}, invocationInstance) {
@@ -25,7 +25,7 @@ class EventInfoPlugin {
       handleScheduledEvent,
       handleCloudfrontEvent,
       handleApiGwEvent,
-      handleSesEvent,
+      handleSnsEvent,
     ];
     this.log = this.invocationInstance.context.iopipe.log;
     this.event = this.invocationInstance.event;
