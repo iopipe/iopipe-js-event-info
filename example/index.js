@@ -1,5 +1,5 @@
 const iopipeLib = require('@iopipe/iopipe');
-const eventinfoPlugin = require('@iopipe/eventinfo');
+const eventinfoPlugin = require('@iopipe/event-info');
 
 const iopipe = iopipeLib({
   token:

@@ -1,4 +1,4 @@
-# EventInfo Plugin for IOpipe JS
+# Event Info Plugin for IOpipe JS
 
 Grabs event information and creates
 custom metrics with the IOpipe library.
@@ -7,27 +7,27 @@ When this plugin is installed, custom metrics
 will be created automatically for
 the following event source data:
 
-* apigw
-* cloudfront
-* firehose
-* kinesis
-* s3
-* scheduled
-* sns
-* ses
+* API Gateway
+* CloudFront
+* Kinesis
+* Kinesis Firehose
+* S3
+* Scheduled Events
+* SNS
+* SES
 
 ## Install Instructions
 
-`npm install @iopipe/eventinfo`
+`npm install @iopipe/event-info`
 
 ## Usage Instructions
 
 ```js
-const eventinfo = require('@iopipe/eventinfo');
-const iopipe = require('iopipe');
+const iopipe = require('@iopipe/iopipe');
+const eventInfoPlugin = require('@iopipe/event-info');
 const iopipeWrapper = iopipe({
   plugins: [
-    eventinfoPlugin()
+    eventInfoPlugin()
   ]
 })
 

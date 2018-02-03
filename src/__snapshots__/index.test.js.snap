@@ -2,92 +2,92 @@
 
 exports[`apiGateway reports snapshot 1`] = `
 Object {
-  "apiGateway.httpMethod": "GET",
-  "apiGateway.path": "/test/hello",
-  "apiGateway.requestContext.accountId": "123456789012",
-  "apiGateway.requestContext.httpMethod": "GET",
-  "apiGateway.requestContext.identity.userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36 OPR/39.0.2256.48",
-  "apiGateway.requestContext.requestId": "41b45ea3-70b5-11e6-b7bd-69b5aaebc7d9",
-  "apiGateway.requestContext.resourcePath": "/{proxy+}",
-  "apiGateway.requestContext.stage": "test",
-  "apiGateway.resource": "/{proxy+}",
-  "iopipe-event-info-type": "apiGateway",
+  "@iopipe/event-info.apiGateway.httpMethod": "GET",
+  "@iopipe/event-info.apiGateway.path": "/test/hello",
+  "@iopipe/event-info.apiGateway.requestContext.accountId": "123456789012",
+  "@iopipe/event-info.apiGateway.requestContext.httpMethod": "GET",
+  "@iopipe/event-info.apiGateway.requestContext.identity.userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36 OPR/39.0.2256.48",
+  "@iopipe/event-info.apiGateway.requestContext.requestId": "41b45ea3-70b5-11e6-b7bd-69b5aaebc7d9",
+  "@iopipe/event-info.apiGateway.requestContext.resourcePath": "/{proxy+}",
+  "@iopipe/event-info.apiGateway.requestContext.stage": "test",
+  "@iopipe/event-info.apiGateway.resource": "/{proxy+}",
+  "@iopipe/event-info.eventType": "apiGateway",
 }
 `;
 
 exports[`cloudFront reports snapshot 1`] = `
 Object {
-  "cloudFront.config.distributionId": "EDFDVBD6EXAMPLE",
-  "cloudFront.headers.host": "d111111abcdef8.cloudfront.net",
-  "cloudFront.headers.userAgent": "curl/7.51.0",
-  "cloudFront.request.clientIp": "2001:0db8:85a3:0:0:8a2e:0370:7334",
-  "cloudFront.request.headers.[\\"user-agent\\"][0].value": "curl/7.51.0",
-  "cloudFront.request.headers.host[0].value": "d111111abcdef8.cloudfront.net",
-  "cloudFront.request.method": "GET",
-  "cloudFront.request.uri": "/picture.jpg",
-  "iopipe-event-info-type": "cloudFront",
+  "@iopipe/event-info.cloudFront.config.distributionId": "EDFDVBD6EXAMPLE",
+  "@iopipe/event-info.cloudFront.headers.host": "d111111abcdef8.cloudfront.net",
+  "@iopipe/event-info.cloudFront.headers.userAgent": "curl/7.51.0",
+  "@iopipe/event-info.cloudFront.request.clientIp": "2001:0db8:85a3:0:0:8a2e:0370:7334",
+  "@iopipe/event-info.cloudFront.request.headers.[\\"user-agent\\"][0].value": "curl/7.51.0",
+  "@iopipe/event-info.cloudFront.request.headers.host[0].value": "d111111abcdef8.cloudfront.net",
+  "@iopipe/event-info.cloudFront.request.method": "GET",
+  "@iopipe/event-info.cloudFront.request.uri": "/picture.jpg",
+  "@iopipe/event-info.eventType": "cloudFront",
 }
 `;
 
 exports[`firehose reports snapshot 1`] = `
 Object {
-  "firehose.deliveryStreamArn": "aws:lambda:events",
-  "firehose.records.length": 2,
-  "firehose.region": "us-west-2",
-  "iopipe-event-info-type": "firehose",
+  "@iopipe/event-info.eventType": "firehose",
+  "@iopipe/event-info.firehose.deliveryStreamArn": "aws:lambda:events",
+  "@iopipe/event-info.firehose.records.length": 2,
+  "@iopipe/event-info.firehose.region": "us-west-2",
 }
 `;
 
 exports[`kinesis reports snapshot 1`] = `
 Object {
-  "iopipe-event-info-type": "kinesis",
-  "kinesis.Records.length": 1,
-  "kinesis.Records[0].awsRegion": "us-east-1",
-  "kinesis.Records[0].eventSourceARN": "event-source-arn",
+  "@iopipe/event-info.eventType": "kinesis",
+  "@iopipe/event-info.kinesis.Records.length": 1,
+  "@iopipe/event-info.kinesis.Records[0].awsRegion": "us-east-1",
+  "@iopipe/event-info.kinesis.Records[0].eventSourceARN": "event-source-arn",
 }
 `;
 
 exports[`s3 reports snapshot 1`] = `
 Object {
-  "iopipe-event-info-type": "s3",
-  "s3.Records[0].awsRegion": "us-east-1",
-  "s3.Records[0].eventName": "event-type",
-  "s3.Records[0].eventTime": "1970-01-01T00:00:00.000Z",
-  "s3.Records[0].requestParameters.sourceIPAddress": "ip-address-where-request-came-from",
-  "s3.Records[0].responseElements[\\"x-amz-id-2\\"]": "Amazon S3 host that processed the request",
-  "s3.Records[0].responseElements[\\"x-amz-request-id\\"]": "Amazon S3 generated request ID",
-  "s3.Records[0].s3.bucket.arn": "bucket-ARN",
-  "s3.Records[0].s3.bucket.name": "bucket-name",
-  "s3.Records[0].s3.object.key": "object-key",
-  "s3.Records[0].s3.object.sequencer": "a string representation of a hexadecimal value used to determine event sequence, only used with PUTs and DELETEs",
-  "s3.Records[0].s3.object.size": 10,
-  "s3.Records[0].userIdentity.principalId": "Amazon-customer-ID-of-the-user-who-caused-the-event",
+  "@iopipe/event-info.eventType": "s3",
+  "@iopipe/event-info.s3.Records[0].awsRegion": "us-east-1",
+  "@iopipe/event-info.s3.Records[0].eventName": "event-type",
+  "@iopipe/event-info.s3.Records[0].eventTime": "1970-01-01T00:00:00.000Z",
+  "@iopipe/event-info.s3.Records[0].requestParameters.sourceIPAddress": "ip-address-where-request-came-from",
+  "@iopipe/event-info.s3.Records[0].responseElements[\\"x-amz-id-2\\"]": "Amazon S3 host that processed the request",
+  "@iopipe/event-info.s3.Records[0].responseElements[\\"x-amz-request-id\\"]": "Amazon S3 generated request ID",
+  "@iopipe/event-info.s3.Records[0].s3.bucket.arn": "bucket-ARN",
+  "@iopipe/event-info.s3.Records[0].s3.bucket.name": "bucket-name",
+  "@iopipe/event-info.s3.Records[0].s3.object.key": "object-key",
+  "@iopipe/event-info.s3.Records[0].s3.object.sequencer": "a string representation of a hexadecimal value used to determine event sequence, only used with PUTs and DELETEs",
+  "@iopipe/event-info.s3.Records[0].s3.object.size": 10,
+  "@iopipe/event-info.s3.Records[0].userIdentity.principalId": "Amazon-customer-ID-of-the-user-who-caused-the-event",
 }
 `;
 
 exports[`scheduled reports snapshot 1`] = `
 Object {
-  "iopipe-event-info-type": "scheduled",
-  "scheduled.account": "123456789012",
-  "scheduled.id": "cdc73f9d-aea9-11e3-9d5a-835b769c0d9c",
-  "scheduled.region": "us-east-1",
-  "scheduled.resources[0]": "arn:aws:events:us-east-1:123456789012:rule/my-schedule",
-  "scheduled.time": "1970-01-01T00:00:00Z",
+  "@iopipe/event-info.eventType": "scheduled",
+  "@iopipe/event-info.scheduled.account": "123456789012",
+  "@iopipe/event-info.scheduled.id": "cdc73f9d-aea9-11e3-9d5a-835b769c0d9c",
+  "@iopipe/event-info.scheduled.region": "us-east-1",
+  "@iopipe/event-info.scheduled.resources[0]": "arn:aws:events:us-east-1:123456789012:rule/my-schedule",
+  "@iopipe/event-info.scheduled.time": "1970-01-01T00:00:00Z",
 }
 `;
 
 exports[`sns reports snapshot 1`] = `
 Object {
-  "iopipe-event-info-type": "sns",
-  "sns.Records[0].EventSubscriptionArn": "arn:aws:sns:us-west-2:123456789000:ses_messages:26a58451-3392-4ab6-a829-d65c2968421a",
-  "sns.Records[0].Sns.MessageId": "483eae4c-4fb0-57e5-a5f9-ff9b08612bef",
-  "sns.Records[0].Sns.Signature": "Uy3tn/qAQg/sXARGk2DRddd31ZtyDE+B1IzRla/KA75BaerApJqN+H59q69z8H+pRx0AyUwOD1K0huBYdDRbAMVOUsMgZgdcNjj0gSfFg8uZvTuKaqTaWj4E0hmzoemHENWeuswuq3l6xoPcAJ9fHd2yFhX+792AV++i/8P4EKv/9I4j8Ejs3OxMRN49gkWefKbv4/avyHOdSaFTnXV0rGLmPb103dtjeY4K05PTKvUlPerN+MdRTvHrjApvqDvP0NEVyYBU4zFZQ6GnFcFnHtTk44c3NH/dVi6Gf9VrX8V1id5VSZICYiIG1iaUZ0b676IhRh8znzjMDWaczOBwkA==",
-  "sns.Records[0].Sns.SignatureVersion": "1",
-  "sns.Records[0].Sns.SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
-  "sns.Records[0].Sns.Subject": "This is a test subject",
-  "sns.Records[0].Sns.Timestamp": "2017-07-05T20:01:21.366Z",
-  "sns.Records[0].Sns.TopicArn": "arn:aws:sns:us-west-2:123456789000:ses_messages",
-  "sns.Records[0].Sns.Type": "Notification",
-  "sns.Records[0].Sns.UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&eifjccgihujihfhrchunfnglreichbrcljrnlvtbeked",
+  "@iopipe/event-info.eventType": "sns",
+  "@iopipe/event-info.sns.Records[0].EventSubscriptionArn": "arn:aws:sns:us-west-2:123456789000:ses_messages:26a58451-3392-4ab6-a829-d65c2968421a",
+  "@iopipe/event-info.sns.Records[0].Sns.MessageId": "483eae4c-4fb0-57e5-a5f9-ff9b08612bef",
+  "@iopipe/event-info.sns.Records[0].Sns.Signature": "Uy3tn/qAQg/sXARGk2DRddd31ZtyDE+B1IzRla/KA75BaerApJqN+H59q69z8H+pRx0AyUwOD1K0huBYdDRbAMVOUsMgZgdcNjj0gSfFg8uZvTuKaqTaWj4E0hmzoemHENWeuswuq3l6xoPcAJ9fHd2yFhX+792AV++i/8P4EKv/9I4j8Ejs3OxMRN49gkWefKbv4/avyHOdSaFTnXV0rGLmPb103dtjeY4K05PTKvUlPerN+MdRTvHrjApvqDvP0NEVyYBU4zFZQ6GnFcFnHtTk44c3NH/dVi6Gf9VrX8V1id5VSZICYiIG1iaUZ0b676IhRh8znzjMDWaczOBwkA==",
+  "@iopipe/event-info.sns.Records[0].Sns.SignatureVersion": "1",
+  "@iopipe/event-info.sns.Records[0].Sns.SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+  "@iopipe/event-info.sns.Records[0].Sns.Subject": "This is a test subject",
+  "@iopipe/event-info.sns.Records[0].Sns.Timestamp": "2017-07-05T20:01:21.366Z",
+  "@iopipe/event-info.sns.Records[0].Sns.TopicArn": "arn:aws:sns:us-west-2:123456789000:ses_messages",
+  "@iopipe/event-info.sns.Records[0].Sns.Type": "Notification",
+  "@iopipe/event-info.sns.Records[0].Sns.UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&eifjccgihujihfhrchunfnglreichbrcljrnlvtbeked",
 }
 `;

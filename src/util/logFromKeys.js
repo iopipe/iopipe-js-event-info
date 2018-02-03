@@ -1,5 +1,7 @@
 import get from 'lodash.get';
 
+const pluginName = '@iopipe/event-info';
+
 export default function logFromWantedKeys({
   event = {},
   type,
@@ -12,7 +14,7 @@ export default function logFromWantedKeys({
     const pathString = arr[0];
     const keyName = arr[1] || arr[0];
     const value = get(event, `${pathPrefix}${pathPrefix && '.'}${pathString}`);
-    log(`${type}.${keyName}`, value);
+    log(`${pluginName}.${type}.${keyName}`, value);
   });
-  log('iopipe-event-info-type', type);
+  log(`${pluginName}.eventType`, type);
 }
