@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "iopipe-scripts build",
+    "build": "iopipe-scripts build --ignore eventSamples,*.test.js",
     "commit": "iopipe-scripts commit",
     "lint": "iopipe-scripts lint",
     "prepublish": "npm run build",
