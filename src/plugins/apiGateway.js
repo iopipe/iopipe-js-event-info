@@ -10,7 +10,10 @@ function eventType(event) {
     'resource',
     'httpMethod'
   ];
-  return apiGatewayRequiredKeys.every(s => s in event) ? type : false;
+  if (typeof event === 'object') {
+    return apiGatewayRequiredKeys.every(s => s in event) ? type : false;
+  }
+  return false;
 }
 
 const keys = [
