@@ -21,7 +21,8 @@
   "author": "IOpipe <dev@iopipe.com>",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@iopipe/scripts": "^1.4.0"
+    "@iopipe/scripts": "^1.4.0",
+    "lodash": "^4.17.4"
   },
   "eslintConfig": {
     "extends": "./node_modules/@iopipe/scripts/eslint.js"
@@ -35,5 +36,7 @@
     "type": "git",
     "url": "https://github.com/iopipe/iopipe-js-eventinfo.git"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash.get": "^4.4.2"
+  }
 }

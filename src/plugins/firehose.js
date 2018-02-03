@@ -1,9 +1,25 @@
-module.exports = function handleFirehoseEvent(event, log) {
-  if (!event.records) return;
-  if (event.records.length === 0) return;
-  if (event.deliveryStreamArn && event.records[0].kinesisRecordMetadata) {
-    log('event-firehose-count', event.records.length);
-    log('event-firehose-deliveryStreamArn', event.deliveryStreamArn);
-    log('event-firehose-awsRegion', event.region);
-  }
-};
+import logFromKeys from '../util/logFromKeys';
+
+const type = 'firehose';
+
+function eventType(event = {}) {
+  const { records = [] } = event;
+  return event.deliveryStreamArn &&
+    records[0] &&
+    records[0].kinesisRecordMetadata
+    ? type
+    : false;
+}
+
+const keys = ['records.length', 'deliveryStreamArn', 'region'];
+
+function plugin(event, log) {
+  logFromKeys({
+    type,
+    event,
+    keys,
+    log
+  });
+}
+
+export { eventType, plugin };

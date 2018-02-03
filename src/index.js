@@ -1,12 +1,6 @@
-/*eslint-disable no-console*/
 import pkg from '../package';
-import handleS3event from './plugins/s3';
-import handleKinesisEvent from './plugins/kinesis';
-import handleFirehoseEvent from './plugins/firehose';
-import handleScheduledEvent from './plugins/scheduled';
-import handleCloudfrontEvent from './plugins/cloudfront';
-import handleApiGwEvent from './plugins/apigw';
-import handleSnsEvent from './plugins/sns';
+import getEventType from './util/eventType';
+import * as reportPlugins from './plugins';
 
 class EventInfoPlugin {
   constructor(config = {}, invocationInstance) {
@@ -19,24 +13,25 @@ class EventInfoPlugin {
     return this;
   }
   preReport() {
-    const eventPlugins = [
-      handleS3event,
-      handleKinesisEvent,
-      handleFirehoseEvent,
-      handleScheduledEvent,
-      handleCloudfrontEvent,
-      handleApiGwEvent,
-      handleSnsEvent
-    ];
-    this.log = this.invocationInstance.context.iopipe.log;
-    this.event = this.invocationInstance.event;
-    eventPlugins.forEach(plugin => {
-      //plugin.bind(this);
-      plugin(this.event, this.log);
-    });
+    const { event, context } = this.invocationInstance;
+    const eventType = getEventType(event);
+    /* eslint-disable import/namespace */
+    const eventPlugin =
+      reportPlugins[eventType] && reportPlugins[eventType].plugin;
+    /* eslint-enable import/namespace */
+    if (typeof eventPlugin !== 'function') {
+      return false;
+    }
+    try {
+      eventPlugin(event, context.iopipe.log);
+    } catch (err) {
+      // err
+    }
+    return true;
   }
   get meta() {
-    return { name: pkg.name, version: pkg.version, homepage: pkg.homepage };
+    const { name, version, homepage } = pkg;
+    return { name, version, homepage };
   }
 }
 
