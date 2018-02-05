@@ -17,14 +17,12 @@ Object {
 
 exports[`cloudFront reports snapshot 1`] = `
 Object {
-  "@iopipe/event-info.cloudFront.config.distributionId": "EDFDVBD6EXAMPLE",
-  "@iopipe/event-info.cloudFront.headers.host": "d111111abcdef8.cloudfront.net",
-  "@iopipe/event-info.cloudFront.headers.userAgent": "curl/7.51.0",
-  "@iopipe/event-info.cloudFront.request.clientIp": "2001:0db8:85a3:0:0:8a2e:0370:7334",
-  "@iopipe/event-info.cloudFront.request.headers.[\\"user-agent\\"][0].value": "curl/7.51.0",
-  "@iopipe/event-info.cloudFront.request.headers.host[0].value": "d111111abcdef8.cloudfront.net",
-  "@iopipe/event-info.cloudFront.request.method": "GET",
-  "@iopipe/event-info.cloudFront.request.uri": "/picture.jpg",
+  "@iopipe/event-info.cloudFront.Records[0].cf.config.distributionId": "EDFDVBD6EXAMPLE",
+  "@iopipe/event-info.cloudFront.Records[0].cf.request.clientIp": "2001:0db8:85a3:0:0:8a2e:0370:7334",
+  "@iopipe/event-info.cloudFront.Records[0].cf.request.headers.[\\"user-agent\\"][0].value": "curl/7.51.0",
+  "@iopipe/event-info.cloudFront.Records[0].cf.request.headers.host[0].value": "d111111abcdef8.cloudfront.net",
+  "@iopipe/event-info.cloudFront.Records[0].cf.request.method": "GET",
+  "@iopipe/event-info.cloudFront.Records[0].cf.request.uri": "/picture.jpg",
   "@iopipe/event-info.eventType": "cloudFront",
 }
 `;

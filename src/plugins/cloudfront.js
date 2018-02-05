@@ -13,18 +13,15 @@ const keys = [
   'request.method',
   'request.uri',
   'request.headers.host[0].value',
-  ['request.headers.host[0].value', 'headers.host'],
-  'request.headers.["user-agent"][0].value',
-  ['request.headers.["user-agent"][0].value', 'headers.userAgent']
-];
+  'request.headers.["user-agent"][0].value'
+].map(str => `Records[0].cf.${str}`);
 
 function plugin(event, log) {
   logFromKeys({
     type,
     event,
     keys,
-    log,
-    pathPrefix: 'Records[0].cf'
+    log
   });
 }
 
