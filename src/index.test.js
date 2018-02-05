@@ -1,8 +1,9 @@
 import _ from 'lodash';
-import eventInfoPlugin from './index';
 
 import * as miniPlugins from './plugins';
 import * as eventSamples from './eventSamples';
+
+const eventInfoPlugin = require('./index');
 
 class MockInvocation {
   constructor(event) {
