@@ -1,0 +1,42 @@
+{
+  "name": "@iopipe/event-info",
+  "version": "0.0.1",
+  "description": "Auto-log custom metrics from AWS Lambda event sources",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "iopipe-scripts build --ignore eventSamples,*.test.js",
+    "commit": "iopipe-scripts commit",
+    "lint": "iopipe-scripts lint",
+    "prepublish": "npm run build",
+    "release": "iopipe-scripts release",
+    "test": "iopipe-scripts test",
+    "validate": "iopipe-scripts validate"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "IOpipe <dev@iopipe.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@iopipe/scripts": "^1.4.0",
+    "lodash": "^4.17.4"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/@iopipe/scripts/eslint.js"
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iopipe/iopipe-js-event-info.git"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2"
+  }
+}
