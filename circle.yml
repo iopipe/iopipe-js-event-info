@@ -3,7 +3,7 @@ machine:
     version: 8.5.0
 dependencies:
   override:
-    - cp .npmrc-ci .npmrc
+    - if [ $CIRCLE_BRANCH = 'master' ]; then cp .npmrc-ci .npmrc; fi
     - yarn
   cache_directories:
     - ~/.cache/yarn
