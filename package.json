@@ -1,7 +1,7 @@
 {
   "name": "@iopipe/event-info",
-  "version": "0.0.1",
-  "description": "Auto-log custom metrics from AWS Lambda event sources",
+  "version": "0.0.0-semantically-released",
+  "description": "Automatically detect function event type and log derived custom metrics.",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -9,6 +9,7 @@
   "scripts": {
     "build": "iopipe-scripts build --ignore eventSamples,*.test.js",
     "commit": "iopipe-scripts commit",
+    "precommit": "npm run validate",
     "lint": "iopipe-scripts lint",
     "prepublish": "npm run build",
     "release": "iopipe-scripts release",
@@ -16,7 +17,14 @@
     "validate": "iopipe-scripts validate"
   },
   "keywords": [
-    "js"
+    "js",
+    "iopipe",
+    "serverless",
+    "lambda",
+    "apiGateway",
+    "cloudFront",
+    "kinesis",
+    "s3"
   ],
   "author": "IOpipe <dev@iopipe.com>",
   "license": "Apache-2.0",
@@ -38,5 +46,8 @@
   },
   "dependencies": {
     "lodash.get": "^4.4.2"
+  },
+  "peerDependencies": {
+    "@iopipe/core": "1.x"
   }
 }
