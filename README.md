@@ -1,4 +1,4 @@
-# Event Info Plugin for IOpipe JS
+# IOpipe JS Event Info Plugin
 
 Grabs event information and creates
 custom metrics with the IOpipe library.
