@@ -1,6 +1,6 @@
 import get from 'lodash.get';
 
-const pluginName = '@iopipe/event-info';
+import { pluginName } from './constants';
 
 export default function logFromWantedKeys({
   event = {},
