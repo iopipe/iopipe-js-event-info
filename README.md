@@ -1,5 +1,7 @@
 # IOpipe JS Event Info Plugin
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/iopipe/iopipe-js-event-info.svg)](https://greenkeeper.io/)
+
 Grabs event information and creates
 custom metrics with the IOpipe library.
 
