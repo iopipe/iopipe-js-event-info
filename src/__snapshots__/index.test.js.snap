@@ -74,6 +74,20 @@ Object {
 }
 `;
 
+exports[`slsIntegrationLambda reports snapshot 1`] = `
+Object {
+  "@iopipe/event-info.apiGateway.headers.X-Amz-Cf-Id": "l06CAg2QsrALeQcLAUSxGXbm8lgMoMIhR2AjKa4AiKuaVnnGsOFy5g==",
+  "@iopipe/event-info.apiGateway.headers.X-Amzn-Trace-Id": "Root=1-5970ef3e249c0321b2eef14aa513ae",
+  "@iopipe/event-info.apiGateway.httpMethod": "GET",
+  "@iopipe/event-info.apiGateway.requestContext.accountId": "1234",
+  "@iopipe/event-info.apiGateway.requestContext.httpMethod": "GET",
+  "@iopipe/event-info.apiGateway.requestContext.identity.userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+  "@iopipe/event-info.apiGateway.requestContext.stage": "dev",
+  "@iopipe/event-info.eventType": "apiGateway",
+  "@iopipe/event-info.eventType.source": "slsIntegrationLambda",
+}
+`;
+
 exports[`sns reports snapshot 1`] = `
 Object {
   "@iopipe/event-info.eventType": "sns",
