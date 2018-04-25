@@ -1,5 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`alexaSkill reports snapshot 1`] = `
+Object {
+  "@iopipe/event-info.alexaSkill.context.AudioPlayer.offsetInMilliseconds": 0,
+  "@iopipe/event-info.alexaSkill.context.AudioPlayer.playerActivity": "IDLE",
+  "@iopipe/event-info.alexaSkill.context.AudioPlayer.token": "audioplayer-token",
+  "@iopipe/event-info.alexaSkill.context.System.apiAccessToken": "AxThk",
+  "@iopipe/event-info.alexaSkill.context.System.apiEndpoint": "https://api.amazonalexa.com",
+  "@iopipe/event-info.alexaSkill.context.System.application.applicationId": "amzn1.ask.skill.[unique-value-here]",
+  "@iopipe/event-info.alexaSkill.context.System.user.accessToken": "Atza|AAAAAAAA",
+  "@iopipe/event-info.alexaSkill.context.System.user.permissions.consentToken": "ZZZZZZZ",
+  "@iopipe/event-info.alexaSkill.context.System.user.userId": "amzn1.ask.account.[unique-value-here]",
+  "@iopipe/event-info.alexaSkill.request.intent.name": "AnswerIntent",
+  "@iopipe/event-info.alexaSkill.request.intent.slots.Item.name": "Item",
+  "@iopipe/event-info.alexaSkill.request.intent.slots.Item.value": "snowball",
+  "@iopipe/event-info.alexaSkill.request.locale": "en-US",
+  "@iopipe/event-info.alexaSkill.request.requestId": "amzn1.echo-api.request.[unique-value-here]",
+  "@iopipe/event-info.alexaSkill.request.timestamp": "2016-10-27T18:21:44Z",
+  "@iopipe/event-info.alexaSkill.request.type": "LaunchRequest",
+  "@iopipe/event-info.alexaSkill.session.application.applicationId": "amzn1.ask.skill.[unique-value-here]",
+  "@iopipe/event-info.alexaSkill.session.attributes.STATE": "_TRIVIAMODE",
+  "@iopipe/event-info.alexaSkill.session.attributes.correctAnswerIndex": 3,
+  "@iopipe/event-info.alexaSkill.session.attributes.correctAnswerText": "Donner",
+  "@iopipe/event-info.alexaSkill.session.attributes.currentQuestionIndex": 0,
+  "@iopipe/event-info.alexaSkill.session.attributes.key": "string value",
+  "@iopipe/event-info.alexaSkill.session.attributes.questions.0": 16,
+  "@iopipe/event-info.alexaSkill.session.attributes.questions.1": 20,
+  "@iopipe/event-info.alexaSkill.session.attributes.questions.2": 29,
+  "@iopipe/event-info.alexaSkill.session.attributes.questions.3": 2,
+  "@iopipe/event-info.alexaSkill.session.attributes.questions.4": 19,
+  "@iopipe/event-info.alexaSkill.session.attributes.repromptText": "Question 1. What was Rudolph's father's name? 1. Blixen. 2. Comet. 3. Donner. 4. Dasher. ",
+  "@iopipe/event-info.alexaSkill.session.attributes.score": 0,
+  "@iopipe/event-info.alexaSkill.session.attributes.speechOutput": "Question 1. What was Rudolph's father's name? 1. Blixen. 2. Comet. 3. Donner. 4. Dasher. ",
+  "@iopipe/event-info.alexaSkill.session.new": true,
+  "@iopipe/event-info.alexaSkill.session.sessionId": "amzn1.echo-api.session.[unique-value-here]",
+  "@iopipe/event-info.alexaSkill.session.user.userId": "amzn1.ask.account.[unique-value-here]",
+  "@iopipe/event-info.alexaSkill.version": "1.0",
+  "@iopipe/event-info.eventType": "alexaSkill",
+}
+`;
+
 exports[`apiGateway reports snapshot 1`] = `
 Object {
   "@iopipe/event-info.apiGateway.httpMethod": "GET",

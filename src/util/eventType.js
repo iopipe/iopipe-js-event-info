@@ -1,3 +1,4 @@
+import { eventType as alexaSkill } from '../plugins/alexaSkill';
 import { eventType as apiGateway } from '../plugins/apiGateway';
 import { eventType as cloudFront } from '../plugins/cloudFront';
 import { eventType as firehose } from '../plugins/firehose';
@@ -16,7 +17,8 @@ export default function(e) {
     kinesis(e) ||
     s3(e) ||
     scheduled(e) ||
-    slsIntegrationLambda(e) ||
-    sns(e)
+    sns(e) ||
+    alexaSkill(e) ||
+    slsIntegrationLambda(e)
   );
 }

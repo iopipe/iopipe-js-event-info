@@ -1,19 +1,21 @@
+import * as alexaSkill from './alexaSkill';
 import * as apiGateway from './apiGateway';
-import * as slsIntegrationLambda from './slsIntegrationLambda';
 import * as cloudFront from './cloudFront';
 import * as firehose from './firehose';
 import * as kinesis from './kinesis';
 import * as s3 from './s3';
 import * as scheduled from './scheduled';
+import * as slsIntegrationLambda from './slsIntegrationLambda';
 import * as sns from './sns';
 
 export {
+  alexaSkill,
   apiGateway,
-  slsIntegrationLambda,
   cloudFront,
   firehose,
   kinesis,
   s3,
   scheduled,
+  slsIntegrationLambda,
   sns
 };
