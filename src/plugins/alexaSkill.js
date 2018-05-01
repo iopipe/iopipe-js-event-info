@@ -14,14 +14,22 @@ function eventType(e = {}) {
     : false;
 }
 
+const keyBlacklist = [
+  'context.System.apiAccessToken',
+  'context.System.user.accessToken',
+  'context.System.user.permissions.consentToken'
+];
+
 function plugin(event, log) {
   const obj = flatten(event);
-  Object.keys(obj).forEach(key => {
-    const val = obj[key];
-    if (typeof val !== 'object' || Object.keys(val).length) {
-      log(`${pluginName}.${type}.${key}`, val);
-    }
-  });
+  Object.keys(obj)
+    .filter(s => keyBlacklist.indexOf(s) === -1)
+    .forEach(key => {
+      const val = obj[key];
+      if (typeof val !== 'object' || Object.keys(val).length) {
+        log(`${pluginName}.${type}.${key}`, val);
+      }
+    });
   log(`${pluginName}.eventType`, type);
 }
 
