@@ -10,6 +10,7 @@ When this plugin is installed, custom metrics
 will be created automatically for
 the following event source data:
 
+* Alexa Skill Kit
 * API Gateway
 * CloudFront
 * Kinesis
