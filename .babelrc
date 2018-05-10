@@ -6,5 +6,6 @@
         "node": ["4.3"]
       }
     }]
-  ]
+  ],
+  "plugins": ["babel-plugin-idx"]
 }

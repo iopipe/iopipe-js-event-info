@@ -30,6 +30,8 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@iopipe/scripts": "^1.4.0",
+    "babel-plugin-idx": "^2.2.0",
+    "idx": "^2.3.0",
     "lodash": "^4.17.4"
   },
   "eslintConfig": {
@@ -45,6 +47,7 @@
     "url": "https://github.com/iopipe/iopipe-js-event-info.git"
   },
   "dependencies": {
+    "flat": "^4.0.0",
     "lodash.get": "^4.4.2"
   },
   "peerDependencies": {
