@@ -6,7 +6,7 @@ import * as eventSamples from './eventSamples';
 const eventInfoPlugin = require('./index');
 
 class MockInvocation {
-  constructor(event) {
+  constructor(event, labelsAvailable = true) {
     this.logData = {};
     this.context = {
       iopipe: {
@@ -16,6 +16,12 @@ class MockInvocation {
       }
     };
     this.event = event;
+    if (labelsAvailable) {
+      this.labels = new Set();
+      this.context.iopipe.label = name => {
+        this.labels.add(name);
+      };
+    }
     return this;
   }
 }
@@ -25,10 +31,22 @@ _.keys(miniPlugins).map(pluginName => {
     /*eslint-disable import/namespace*/
     const sampleRecord = eventSamples[pluginName];
     /*eslint-enable import/namespace*/
+    // labels available
     const invocationInstance = new MockInvocation(sampleRecord);
     eventInfoPlugin()(invocationInstance).preReport();
-    const { logData } = invocationInstance;
+    const { logData, labels } = invocationInstance;
     expect(_.isEmpty(logData)).toBe(false);
     expect(logData).toMatchSnapshot();
+    expect(labels).toMatchSnapshot();
+
+    // Check that the plugin still works if the label function is not available
+    // (covers older agents)
+    const invocationInstanceWithoutLabels = new MockInvocation(
+      sampleRecord,
+      false
+    );
+    eventInfoPlugin()(invocationInstanceWithoutLabels).preReport();
+    expect(invocationInstanceWithoutLabels.labels).toBeUndefined();
+    expect(invocationInstanceWithoutLabels.logData).toMatchSnapshot();
   });
 });

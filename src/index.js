@@ -1,5 +1,5 @@
 import pkg from '../package';
-import getEventType from './util/eventType';
+import { getEventType, eventTypeToSlug } from './util/eventType';
 import * as reportPlugins from './plugins';
 
 class EventInfoPlugin {
@@ -22,6 +22,10 @@ class EventInfoPlugin {
       /* eslint-enable import/namespace */
       if (typeof eventPlugin !== 'function') {
         return false;
+      }
+      if (typeof context.iopipe.label === 'function') {
+        context.iopipe.label('@iopipe/plugin-event-info');
+        context.iopipe.label(`@iopipe/aws-${eventTypeToSlug(eventType)}`);
       }
       eventPlugin(event, context.iopipe.log);
     } catch (err) {
