@@ -33,7 +33,7 @@ _.keys(miniPlugins).map(pluginName => {
     /*eslint-enable import/namespace*/
     // labels available
     const invocationInstance = new MockInvocation(sampleRecord);
-    eventInfoPlugin()(invocationInstance).preReport();
+    eventInfoPlugin()(invocationInstance).postInvoke();
     const { logData, labels } = invocationInstance;
     expect(_.isEmpty(logData)).toBe(false);
     expect(logData).toMatchSnapshot();
@@ -45,7 +45,7 @@ _.keys(miniPlugins).map(pluginName => {
       sampleRecord,
       false
     );
-    eventInfoPlugin()(invocationInstanceWithoutLabels).preReport();
+    eventInfoPlugin()(invocationInstanceWithoutLabels).postInvoke();
     expect(invocationInstanceWithoutLabels.labels).toBeUndefined();
     expect(invocationInstanceWithoutLabels.logData).toMatchSnapshot();
   });
