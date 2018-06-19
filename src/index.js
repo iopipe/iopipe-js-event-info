@@ -8,11 +8,11 @@ class EventInfoPlugin {
     this.config = config;
 
     this.hooks = {
-      'pre:report': this.preReport.bind(this)
+      'post:invoke': this.postInvoke.bind(this)
     };
     return this;
   }
-  preReport() {
+  postInvoke() {
     try {
       const { event, context } = this.invocationInstance;
       const eventType = getEventType(event);
