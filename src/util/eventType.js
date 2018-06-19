@@ -9,7 +9,7 @@ import { eventType as slsIntegrationLambda } from '../plugins/slsIntegrationLamb
 import { eventType as sns } from '../plugins/sns';
 
 // e === original lambda event
-export default function(e) {
+export function getEventType(e) {
   return (
     apiGateway(e) ||
     cloudFront(e) ||
@@ -21,4 +21,8 @@ export default function(e) {
     alexaSkill(e) ||
     slsIntegrationLambda(e)
   );
+}
+
+export function eventTypeToSlug(eventType) {
+  return eventType.replace(/([A-Z])/g, '-$1').toLowerCase();
 }
