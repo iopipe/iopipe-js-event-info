@@ -7,6 +7,7 @@ import s3 from './s3';
 import scheduled from './scheduled';
 import slsIntegrationLambda from './slsIntegrationLambda';
 import sns from './sns';
+import sqs from './sqs';
 
 export {
   alexaSkill,
@@ -17,5 +18,6 @@ export {
   s3,
   scheduled,
   slsIntegrationLambda,
-  sns
+  sns,
+  sqs
 };

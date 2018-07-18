@@ -344,3 +344,40 @@ Object {
   "@iopipe/event-info.sns.Records[0].Sns.UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&eifjccgihujihfhrchunfnglreichbrcljrnlvtbeked",
 }
 `;
+
+exports[`sqs reports snapshot 1`] = `
+Object {
+  "@iopipe/event-info.eventType": "sqs",
+  "@iopipe/event-info.sqs.Records[0].attributes.ApproximateFirstReceiveTimestamp": "1523232000001",
+  "@iopipe/event-info.sqs.Records[0].attributes.ApproximateReceiveCount": "1",
+  "@iopipe/event-info.sqs.Records[0].attributes.SenderId": "123456789012",
+  "@iopipe/event-info.sqs.Records[0].attributes.SentTimestamp": "1523232000000",
+  "@iopipe/event-info.sqs.Records[0].awsRegion": "us-east-1",
+  "@iopipe/event-info.sqs.Records[0].eventSourceARN": "arn:aws:sqs:us-east-1:123456789012:MyQueue",
+  "@iopipe/event-info.sqs.Records[0].md5OfBody": "7b270e59b47ff90a553787216d55d91d",
+  "@iopipe/event-info.sqs.Records[0].messageId": "19dd0b57-b21e-4ac1-bd88-01bbb068cb78",
+  "@iopipe/event-info.sqs.Records[0].receiptHandle": "MessageReceiptHandle",
+}
+`;
+
+exports[`sqs reports snapshot 2`] = `
+Set {
+  "@iopipe/plugin-event-info",
+  "@iopipe/aws-sqs",
+}
+`;
+
+exports[`sqs reports snapshot 3`] = `
+Object {
+  "@iopipe/event-info.eventType": "sqs",
+  "@iopipe/event-info.sqs.Records[0].attributes.ApproximateFirstReceiveTimestamp": "1523232000001",
+  "@iopipe/event-info.sqs.Records[0].attributes.ApproximateReceiveCount": "1",
+  "@iopipe/event-info.sqs.Records[0].attributes.SenderId": "123456789012",
+  "@iopipe/event-info.sqs.Records[0].attributes.SentTimestamp": "1523232000000",
+  "@iopipe/event-info.sqs.Records[0].awsRegion": "us-east-1",
+  "@iopipe/event-info.sqs.Records[0].eventSourceARN": "arn:aws:sqs:us-east-1:123456789012:MyQueue",
+  "@iopipe/event-info.sqs.Records[0].md5OfBody": "7b270e59b47ff90a553787216d55d91d",
+  "@iopipe/event-info.sqs.Records[0].messageId": "19dd0b57-b21e-4ac1-bd88-01bbb068cb78",
+  "@iopipe/event-info.sqs.Records[0].receiptHandle": "MessageReceiptHandle",
+}
+`;

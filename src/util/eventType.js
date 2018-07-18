@@ -7,6 +7,7 @@ import { eventType as s3 } from '../plugins/s3';
 import { eventType as scheduled } from '../plugins/scheduled';
 import { eventType as slsIntegrationLambda } from '../plugins/slsIntegrationLambda';
 import { eventType as sns } from '../plugins/sns';
+import { eventType as sqs } from '../plugins/sqs';
 
 // e === original lambda event
 export function getEventType(e) {
@@ -18,6 +19,7 @@ export function getEventType(e) {
     s3(e) ||
     scheduled(e) ||
     sns(e) ||
+    sqs(e) ||
     alexaSkill(e) ||
     slsIntegrationLambda(e)
   );
