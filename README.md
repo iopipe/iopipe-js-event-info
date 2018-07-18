@@ -3,12 +3,9 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-Grabs event information and creates
-custom metrics with the IOpipe library.
+Records Lambda event information for observability, search, and alerting within [IOpipe](https://iopipe.com).
 
-When this plugin is installed, custom metrics
-will be created automatically for
-the following event source data:
+This plugin currently supports these event types:
 
 * Alexa Skill Kit
 * API Gateway
@@ -19,15 +16,24 @@ the following event source data:
 * Scheduled Events
 * SNS
 * SES
+* SQS
 
-## Install Instructions
+## Installation
+
+__Note: This plugin is automatically included in the recommended package [@iopipe/iopipe](https://github.com/iopipe/iopipe-js). No direct install necessary.__
+
+With [yarn](https://yarnpkg.com/) (recommended) in project directory:
+
+`yarn add @iopipe/event-info`
+
+With npm in project directory:
 
 `npm install @iopipe/event-info`
 
-## Usage Instructions
+## Usage
 
 ```js
-const iopipe = require('@iopipe/iopipe');
+const iopipe = require('@iopipe/core');
 const eventInfoPlugin = require('@iopipe/event-info');
 const iopipeWrapper = iopipe({
   plugins: [
@@ -35,13 +41,14 @@ const iopipeWrapper = iopipe({
   ]
 })
 
-module.exports.handler = iopipeWrapper(
-  function yourHandler(event, context, callback) {
-    callback();
+exports.handler = iopipeWrapper((event, context) => {
+    context.succeed('Success!');
   }
 );
 ```
 
-# License
+## License
 
-Apache 2.0, copyright 2018 IOpipe, Inc.
+Apache-2.0 see [LICENSE](https://www.apache.org/licenses/LICENSE-2.0.html)
+
+Copyright 2018, IOpipe, Inc.
