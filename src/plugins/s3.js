@@ -6,7 +6,9 @@ function eventType(event = {}) {
   const { Records = [] } = event;
   const [firstEvent = {}] = Records;
   const { eventVersion, eventSource } = firstEvent;
-  return eventVersion === '2.0' && eventSource === 'aws:s3' ? type : false;
+  return ['2.0', '2.1'].indexOf(eventVersion) !== -1 && eventSource === 'aws:s3'
+    ? type
+    : false;
 }
 
 const keys = [
