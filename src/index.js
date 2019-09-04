@@ -27,7 +27,7 @@ class EventInfoPlugin {
         context.iopipe.label('@iopipe/plugin-event-info');
         context.iopipe.label(`@iopipe/aws-${eventTypeToSlug(eventType)}`);
       }
-      eventPlugin(event, context.iopipe.log);
+      eventPlugin(event, context.iopipe.metric);
     } catch (err) {
       // err
     }

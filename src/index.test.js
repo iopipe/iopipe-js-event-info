@@ -10,7 +10,7 @@ class MockInvocation {
     this.logData = {};
     this.context = {
       iopipe: {
-        log: (key, value) => {
+        metric: (key, value) => {
           this.logData[key] = value;
         }
       }
