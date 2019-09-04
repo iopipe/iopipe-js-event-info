@@ -14,13 +14,15 @@ const keys = [
   'Records[0].eventSourceARN',
   'Records.length'
 ];
+const coerceTypes = { 'Records.length': value => parseInt(value, 10) };
 
 function plugin(event, log) {
   logFromKeys({
     type,
     event,
     keys,
-    log
+    log,
+    coerceTypes
   });
 }
 
