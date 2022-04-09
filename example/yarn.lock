@@ -15,8 +15,9 @@
     cosmiconfig "^3.1.0"
 
 "@iopipe/event-info@file:..":
-  version "0.0.1"
+  version "0.0.0-semantically-released"
   dependencies:
+    flat "^4.0.0"
     lodash.get "^4.4.2"
 
 "@iopipe/iopipe@^1.5.0":
@@ -1717,6 +1718,12 @@ find-up@^2.0.0, find-up@^2.1.0:
   dependencies:
     locate-path "^2.0.0"
 
+flat@^4.0.0:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/flat/-/flat-4.1.1.tgz#a392059cc382881ff98642f5da4dde0a959f309b"
+  dependencies:
+    is-buffer "~2.0.3"
+
 for-in@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -2144,6 +2151,10 @@ is-binary-path@^1.0.0:
 is-buffer@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
+
+is-buffer@~2.0.3:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.5.tgz#ebc252e400d22ff8d77fa09888821a24a658c191"
 
 is-builtin-module@^1.0.0:
   version "1.0.0"
@@ -2637,8 +2648,8 @@ minimist@^1.2.0:
     minimist "0.0.8"
 
 moment@^2.13.0:
-  version "2.20.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
+  version "2.29.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.2.tgz#00910c60b20843bcba52d37d58c628b47b1f20e4"
 
 ms@2.0.0:
   version "2.0.0"
