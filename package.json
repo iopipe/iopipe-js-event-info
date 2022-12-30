@@ -47,7 +47,7 @@
     "url": "https://github.com/iopipe/iopipe-js-event-info.git"
   },
   "dependencies": {
-    "flat": "^4.0.0",
+    "flat": "^5.0.1",
     "lodash.get": "^4.4.2"
   },
   "peerDependencies": {
